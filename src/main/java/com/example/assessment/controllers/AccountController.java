@@ -51,9 +51,12 @@ public class AccountController {
 
     @GetMapping("/{accountId}/transactions")
     public ApiResponse<List<Transaction>> getTransactionHistory(@PathVariable Long accountId) {
+        System.out.println("Request received for transaction history" + accountId);
         try {
             List<Transaction> transactions = accountService.retrieveTransactionHistory(accountId);
+            System.out.println("Response sent: " + transactions);
             return ApiResponse.success("Transaction history retrieved successfully", transactions);
+
         } catch (RuntimeException e) {
             return ApiResponse.failure("Transaction history retrieval failed: " + e.getMessage(),null);
         }
