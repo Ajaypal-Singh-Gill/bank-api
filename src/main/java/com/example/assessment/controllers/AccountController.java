@@ -38,7 +38,7 @@ public class AccountController {
 
     @PostMapping(value = "/transfer_funds", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ApiResponse<TransferFundsResponse> transferFunds(@RequestBody TransferFundsRequest transferFundsRequest) {
+    public ApiResponse<TransferFundsResponse> transferFunds( @Valid @RequestBody TransferFundsRequest transferFundsRequest) {
         System.out.println("Request received for transferring funds" + transferFundsRequest);
         try {
             TransferFundsResponse transferFundsResponse = accountService.transferFunds(transferFundsRequest);
