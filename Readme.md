@@ -124,6 +124,8 @@ Create a New User Account
 1. Non-negative balances only.
 2. Email IDs must be unique across all user accounts.
 3. Accounts can be created with a balance of zero, provided it is explicitly set.
+4. Creating a new user account always creates both a **new user** and a **new account**.
+5. The API does not support creating additional accounts for an existing user.
 
 Transfer Funds
 1. Transactions (successful or failed due to insufficient funds) are recorded for both source and destination accounts.
