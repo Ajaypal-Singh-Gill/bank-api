@@ -121,13 +121,13 @@ curl -X GET https://bank-api-o074.onrender.com/1/transactions
 
 Create a New User Account
 
-1. Non-negative balances only.
-2. Email IDs must be unique across all user accounts.
+1. Non-negative balances only (Checks are their to ensure this)..
+2. Email IDs must be unique across all user accounts (Checks are their to ensure this).
 3. Accounts can be created with a balance of zero, provided it is explicitly set.
 
 Transfer Funds
 1. Transactions (successful or failed due to insufficient funds) are recorded for both source and destination accounts.
-
+2. There is no minimum or maximum limit on the transfer amount, provided it is non-negative.
 
 Retrieve Transaction History
 1. The transaction history provides all recorded transactions for the given account, including successful and failed attempts.
