@@ -10,4 +10,9 @@ public class HealthController {
     public String ping() {
         return "pong";
     }
+
+    @RequestMapping("/")
+    public String up() {
+        return "UP";
+    }
 }
