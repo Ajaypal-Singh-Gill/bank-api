@@ -37,13 +37,21 @@ API performing following operations
     ```
    
 4. Access the service at http://localhost:8080.
+5. Alternatively, access the deployed service directly at:
+      [https://bank-api-o074.onrender.com](https://bank-api-o074.onrender.com)
    
 ## API Endpoints
 
 1. Service Up Status Check
 
 ```bash
+# For local testing
 curl --location 'http://localhost:8080/ping' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json'
+
+# For testing on deployed server
+curl --location 'https://bank-api-o074.onrender.com/ping' \
 --header 'Accept: application/json' \
 --header 'Content-Type: application/json'
 ```
@@ -51,7 +59,20 @@ curl --location 'http://localhost:8080/ping' \
 2. Create New User Account
 
 ```bash
+# For local testing
 curl --location 'http://localhost:8080/create_new_user_account' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "firstName": "john",
+    "lastName": "Doe",
+    "email": "john.doe@gmail.cm",
+    "password": "password",
+    "balance": 800
+}'
+
+# For testing on deployed server
+curl --location 'https://bank-api-o074.onrender.com/create_new_user_account' \
 --header 'Accept: application/json' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -66,6 +87,7 @@ curl --location 'http://localhost:8080/create_new_user_account' \
 3. Transfer Funds
 
 ```bash
+# For local testing
 curl -X POST http://localhost:8080/transfer_funds \
 -H "Content-Type: application/json" \
 -d '{
@@ -74,12 +96,25 @@ curl -X POST http://localhost:8080/transfer_funds \
     "amount": 100.00
 }'
 
+# For testing on deployed server
+curl -X POST https://bank-api-o074.onrender.com/transfer_funds \
+-H "Content-Type: application/json" \
+-d '{
+    "fromAccountId": 1,
+    "toAccountId": 2,
+    "amount": 100.00
+}'
 ```
 
 4. Get Transaction History
 
 ```bash
+# For local testing
 curl -X GET http://localhost:8080/1/transactions
+
+# For testing on deployed server
+curl -X GET https://bank-api-o074.onrender.com/1/transactions
+
 ```
 
 ## Assumptions
