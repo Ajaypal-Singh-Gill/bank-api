@@ -4,6 +4,7 @@ import com.example.assessment.DTOs.CreateUserAccountRequest;
 import com.example.assessment.DTOs.CreateUserAccountResponse;
 import com.example.assessment.DTOs.TransferFundsRequest;
 import com.example.assessment.DTOs.TransferFundsResponse;
+import com.example.assessment.enums.TransactionType;
 import com.example.assessment.models.Account;
 import com.example.assessment.models.Transaction;
 import com.example.assessment.models.User;
@@ -59,7 +60,7 @@ public class AccountService {
         final LocalDateTime now = LocalDateTime.now();
 
         if (fromAccount.getBalance().compareTo(transferFundsRequest.getAmount()) == -1) {
-            transactionRepo.save(new Transaction(fromAccount.getId(), transferFundsRequest.getFromAccountId(), transferFundsRequest.getAmount().negate(), "Debit", "FAILED: Insufficient funds", now));
+            transactionRepo.save(new Transaction(fromAccount.getId(), transferFundsRequest.getFromAccountId(), transferFundsRequest.getAmount().negate(), TransactionType.DEBIT, "FAILED: Insufficient funds", now));
             throw new RuntimeException("Insufficient funds in source account");
         }
 
@@ -73,7 +74,7 @@ public class AccountService {
                 -1,
                 transferFundsRequest.getFromAccountId(),
                 transferFundsRequest.getAmount().negate(),
-                "Debit",
+                TransactionType.DEBIT,
                 "Transferred to Account " + toAccount.getId(),
                 now
         ));
@@ -81,7 +82,7 @@ public class AccountService {
                 -1,
                 transferFundsRequest.getToAccountId(),
                 transferFundsRequest.getAmount(),
-                "Credit",
+                TransactionType.CREDIT,
                 "Received from Account " + fromAccount.getId(),
                 now
         ));
