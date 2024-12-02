@@ -37,7 +37,7 @@ API performing following operations
     ```
    
 4. Access the service at http://localhost:8080.
-5. Alternatively, access the deployed service directly at:
+5. Alternatively, access the deployed service directly at (Due to the free plan, instance will spin down with inactivity, which can delay requests by 50 seconds or more.):
       [https://bank-api-o074.onrender.com](https://bank-api-o074.onrender.com)
    
 ## API Endpoints
